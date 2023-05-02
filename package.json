@@ -1,0 +1,23 @@
+{
+    "name": "blockchain-toolkit",
+    "version": "1.0.0",
+    "description": "The Complete Blockchain Developer Toolkit for 2019 & Beyond",
+    "main": "truffle-config.js",
+    "directories": {
+        "test": "test"
+    },
+    "scripts": {
+        "dev": "lite-server",
+        "test": "echo \"Error: no test specified\" && sexit 1"
+    },
+    "author": "gregory@dappuniversity.com",
+    "license": "ISC",
+    "devDependencies": {
+        "truffle-hdwallet-provider": "^1.0.0-web3one.0"
+    },
+    "dependencies": {
+        "@openzeppelin/contracts": "^4.8.3",
+        "contract": "^0.1.2",
+        "truffle": "^5.8.4"
+    }
+}
