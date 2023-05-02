@@ -5,6 +5,8 @@ const web3 = new Web3('http://localhost:7545');
 
 contract('NFT', (accounts) => {
 
+    let balance = 0;
+
     it('successfully mint new NFT with correct name and description', async () => {
         const nft = await NFT.deployed();
 
@@ -18,6 +20,8 @@ contract('NFT', (accounts) => {
         const tokenData = await nft.getTokenData(tokenId);
         assert.equal(tokenData.name, name, 'Token name was not set correctly');
         assert.equal(tokenData.description, description, 'Token description was not set correctly');
+
+        this.balance = await web3.eth.getBalance(accounts[0]);
     })
 
 
@@ -118,6 +122,8 @@ contract('NFT', (accounts) => {
         const tokenId = 1;
         const owner = await nft.ownerOf(tokenId);
         assert.equal(owner, accounts[0], 'The ownership of the NFT did not remain with the first user');
-        // TODO assert that no ether has been transferred
+
+        const currentBalance = await web3.eth.getBalance(accounts[0]);
+        assert.equal(BigInt(currentBalance), BigInt(this.balance), 'The balance has been changed for the first account');
     })
 })
